@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AngularJS puzzle</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/javascript" src="slidingPuzzle.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"/>
+</head>
+<body data-ng-app="puzzleApp" id="sliding-advanced" data-ng-controller="slidingAdvancedCtrl">
+
+   <div>
+        <img src="img/isentia1.jpg"></img>
+   </div>
+	<div data-ng-include="type"></div>
+	    	<div>
+				<h2>Match with the left picture</h2>
+				<div class="status">
+					moves: <strong>{{puzzle.api.moves}}</strong><br/>
+					solved: <strong>{{puzzle.api.isSolved()}}</strong>
+				</div>
+				<div class="size">
+					rows: <input type="text" data-ng-model="puzzle.rows" size="2"/>
+					cols: <input type="text" data-ng-model="puzzle.cols" size="2"/><br/>
+					<button data-ng-click="puzzle.api.shuffle()">shuffle</button>
+					<button data-ng-click="puzzle.api.solve()">solve</button>
+				</div>
+				
+				<sliding-puzzle api="puzzle.api" size="{{puzzle.rows}}x{{puzzle.cols}}" src="{{puzzle.src}}" ng-draggable="true"></sliding-puzzle>
+			</div>
+		
+		
+</body>
+</html>
